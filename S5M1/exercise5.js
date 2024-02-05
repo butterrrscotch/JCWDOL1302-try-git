@@ -43,3 +43,6 @@ function arrToString (arrWords) {
     return result;
         }
         console.log(`2. The concatenation of the array is "${arrToString(arrWords)}"`)
+
+
+//3. Write a function to split a string and convert it into an array of words
