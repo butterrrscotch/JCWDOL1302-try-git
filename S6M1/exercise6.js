@@ -7,11 +7,11 @@
 ● Parameters : array of student
 ● Return values :
 ○ Object with this following properties :
-■ Score
+1. Score
 ● Highest
 ● Lowest
 ● Average
-■ Age
+2. Age
 ● Highest
 ● Lowest
 ● Average
@@ -38,16 +38,31 @@ let dataStudent = [
   },
 ];
 
+// function calculateAll(dataStudent){
+//   let highestScore = dataStudent[0].score;
+//   let studentWithHighestScore = dataStudent[0].name;
+//   let lowestScore = dataStudent[0].score;
+//   let studentWithLowestScore = dataStudent[0].name;
+//   let totalScore = 0;
+
+//   for (let i = 0; i < dataStudent.length; i++) {
+//     let studentHighest = dataStudent[i];
+//     if (studentHighest.score > highestScore) {
+//       highestScore = studentHighest.score;
+//       studentWithHighestScore = studentHighest.name;
+//     }
+
+// }
+
 //1. a. Highest Score
 function theHighestScore(dataStudent) {
   let highestScore = dataStudent[0].score;
   let studentWithHighestScore = dataStudent[0].name;
 
   for (let i = 0; i < dataStudent.length; i++) {
-    let studentHighest = dataStudent[i];
-    if (studentHighest.score > highestScore) {
-      highestScore = studentHighest.score;
-      studentWithHighestScore = studentHighest.name;
+    if (dataStudent[i].score > highestScore) {
+      highestScore = dataStudent[i].score;
+      studentWithHighestScore = dataStudent[i].name;
     }
   }
   return { highestScore, studentWithHighestScore };
@@ -64,10 +79,9 @@ function theLowestScore(dataStudent) {
   let studentWithLowestScore = dataStudent[0].name;
 
   for (let i = 0; i < dataStudent.length; i++) {
-    let studentLowest = dataStudent[i];
-    if (studentLowest.score < lowestScore) {
-      lowestScore = studentLowest.score;
-      studentWithLowestScore = studentLowest.name;
+    if (dataStudent[i].score < lowestScore) {
+      lowestScore = dataStudent[i].score;
+      studentWithLowestScore = dataStudent[i].name;
     }
   }
   return { lowestScore, studentWithLowestScore };
@@ -83,8 +97,7 @@ function theAverageScore(dataStudent) {
   let totalScore = 0;
 
   for (let i = 0; i < dataStudent.length; i++) {
-    let studentAverage = dataStudent[i];
-    totalScore += studentAverage.score;
+    totalScore += dataStudent[i].score;
   }
   let averageScore = totalScore / dataStudent.length;
   return { averageScore };
@@ -92,3 +105,28 @@ function theAverageScore(dataStudent) {
 
 let result3 = theAverageScore(dataStudent);
 console.log(`   c. The average score is ${result3.averageScore}`);
+
+//2. a. Oldest Age
+const calculateAge = function (birthDate) {
+  const currentDate = new Date();
+  const age = currentDate - birthDate;
+  return Math.floor(age / (365 * 24 * 3600 * 1000));
+};
+
+function theOldestAge(dataStudent) {
+  let oldestAge = calculateAge(dataStudent[0].age);
+  let studentWithOldestAge = dataStudent[0].name;
+
+  for (let i = 0; i < dataStudent.length; i++) {
+    if (dataStudent[i].age > oldestAge) {
+      oldestAge = dataStudent[i].age;
+      studentWithOldestAge = dataStudent[i].name;
+    }
+  }
+  return { oldestAge, studentWithOldestAge };
+}
+
+let result4 = theOldestAge(dataStudent);
+console.log(
+  `2. a. The oldest student is ${result4.studentWithOldestAge}, ${result.oldestAge} years old`
+);
